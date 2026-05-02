@@ -1,1 +1,0 @@
-Iris:Connect(Iris.ShowDemoWindow)
