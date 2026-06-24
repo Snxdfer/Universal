@@ -1,8 +1,9 @@
+-- made by: ancestrychanged
+-- https://scriptblox.com/u/ancestrychanged
+-- ancestrychanged.com/socials
+
 --!optimize 2
 --!native
-
--- Made with <3 by Dave
--- ancestrychanged.com/socials
 
 return function(userConfig)
     -- if not IB_OBFUSCATED then
