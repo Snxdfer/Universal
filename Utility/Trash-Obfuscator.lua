@@ -1,6 +1,6 @@
 --[[
     Version: 1.0.5
-    Last Update: 28 / 06 / 2025 | Day / Month / Year
+    Last Update: 23 / 06 / 2026 | Day / Month / Year
 ]]--
 
 --// Source
@@ -16,9 +16,9 @@ function obfuscate(source,VarName,WaterMark)
         local ticks = tick()
 
         if typeof(WaterMark) == "string" and WaterMark ~= nil then
-            WM = "    "..tostring(WaterMark).." | Secure by elrandom#1311 & Nyrelia.cc"
+            WM = "    "..tostring(WaterMark).." | Secure by elrandom#1311 & Nyrelia.js"
         else
-            WM = "    ".."WaterMark".." | Secure by elrandom#1311 & Nyrelia.cc"
+            WM = "    ".."WaterMark".." | Secure by elrandom#1311 & Nyrelia.js"
         end
 
         WM = "--[[".."\n".. tostring(WM) .."\n".."]]--".."\n\n"
@@ -68,15 +68,15 @@ function obfuscate(source,VarName,WaterMark)
             local highest = 1
 
             local topic = {
-                "Deobfuscate? idk.",
-                "Hello World!",
+                "Deobfuscate? idk..",
+                "kys stupid bitch nigga",
                 "IronBrew Fork? Nope.",
-                "PSU Fork? Nope.",
+                "PSU Fork? nah.",
                 "Touch some grass",
                 "New update when? never.",
-                "JuanchoLucas",
-                "Nyrelia.cc by 00Fazee!",
-                "Nyrelia.cc on top",
+                "fat nigger suck my dick",
+                "sybau little pig",
+                "worst obf ive seen",
                 random_(math.random(50,150)),
             }
 
@@ -135,7 +135,7 @@ function obfuscate(source,VarName,WaterMark)
 
         local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,4), math.random(400,600))..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(2,4), math.random(string.len(source) / 2, string.len(source) * 2))
         setclipboard(obfuscated)
-        warn("Done obfuscate in "..tostring(tick() - ticks).." seconds")
+        warn("Done obfuscating in "..tostring(tick() - ticks).." seconds")
     return
 end
 
