@@ -2338,7 +2338,7 @@ local OnTeleport; OnTeleport = Player.OnTeleport:Connect(function()
     else
         getfenv().queue_on_teleport([[
             repeat task.wait() until game:IsLoaded()
-            task.wait(3)
+            task.wait(5)
             getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/Snxdfer/Universal/refs/heads/main/Open-Aimbot/source.lua", true))()
         ]])
         OnTeleport:Disconnect()
