@@ -18,14 +18,10 @@
     ✨Universal Aim Assist Framework✨
     Release 1.9.5
 
-    Author: ttwiz_z (ttwizz) <i@twix.cyou>
-    GitHub: https://github.com/ttwizz/Open-Aimbot
-
 •───────•°•❀•°•───────•୧‿̩͙ ˖︵ꕀ ⠀𓏶 ̣̣̥⠀ ꕀ︵˖ ̩͙‿୨•───────•°•❀•°•───────•]]
 
 
 --! Debugger
-
 local DEBUG = false
 
 if DEBUG then
