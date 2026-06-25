@@ -13,9 +13,9 @@ local Window = OrionLib:MakeWindow({
     SearchBar = false,
     IntroEnabled = true,
     IntroText = "made by 00Fazee (elrandom#1311)",
-    IntroIcon = "rbxassetid://76607437080421",
+    IntroIcon = "rbxassetid://120907355927374",
     ShowIcon = true,
-    Icon = "rbxassetid://76607437080421",
+    Icon = "rbxassetid://120907355927374",
     ConfigFolder = "coordsfinder"
 })
 
