@@ -1,0 +1,214 @@
+--[[
+⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⢠⡆⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠈⣷⣄⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⣠⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢿⠿⠃⠀⠀⠀⠉⠉⠁⠀⠀⠐⠿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣤⣶⣶⣶⣤⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣠⣶⣿⣿⡿⣿⣿⣿⡿⠋⠉⠀⠀⠉⠙⢿⣿⣿⡿⣿⣿⣷⣦⡀⠀⠀⠀
+⠀⢀⣼⣿⣿⠟⠁⢠⣿⣿⠏⠀⠀⢠⣤⣤⡀⠀⠀⢻⣿⣿ ⠙⢿⣿⣿⣦⠀⠀
+⣰⣿⣿⡟⠁⠀⠀⢸⣿⣿⠀⠀⢿DEPSO⡟⠀⠀⢸⣿⡇⠀⠀ ⠙⣿⣿⣷⡄
+⠈⠻⣿⣿⣦⣄⠀⠸⣿⣿⡀⠀⠀⠀⠉⠉⠀⠀  ⣸⣿⣿ ⢀⣤⣾⣿⣿⠟⠁
+⠀⠀⠈⠻⣿⣿⣿⣶⣿⣿⣿⣦⣄⠀⠀⠀⢀⣠⣾⣿⣿⣿⣾⣿⣿⡿⠋⠁⠀⠀
+⠀⠀⠀⠀⠀⠙⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠛⠿⠿⠿⠿⠿⠿⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢰⣷⡦⠀⠀⠀⢀⣀⣀⠀⠀⠀⢴⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣸⠟⠁⠀⠀⠀⠘⣿⡇⠀⠀⠀⠀⠙⢷⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀ ⠻⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀
+⠀⠀⠀
+	@author depso (depthso)
+	@description Optimized ESP for Roblox
+    
+	This file is COMPILED
+]]
+
+local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
+end return a.cache[b].c end}do function a.a()return{}end function a.b()local b={
+Objects={}}b.__index=b a.load'a'function b:CreateObjectsClass()return{Objects={}
+,Counter=1}end function b:GetDrawingObject(c,d)local e=self.Objects local f=e[c]
+if not f then f=self:CreateObjectsClass()e[c]=f end local g,h=f.Counter,f.
+Objects local i=h[g]f.Counter+=1 if not i then i=d(c)h[g]=i end i.Visible=true
+return i end function b:CleanUpClass(c,d)local e,f=c.Counter-1,c.Objects c.
+Counter=1 local g=#f local h=g-e if h<=0 then return g,h end for i=1,h do local
+j=false repeat local k=e+i local l=f[k]if not l then j=true break end l.Visible=
+false l.Position=Vector2.zero j=true until true if not j then break end end
+return g,h end function b:CleanUp(c)local d,e=self.Objects,c and''or nil for f,g
+in d do local h,i=self:CleanUpClass(g,f,e)if e then e..=string.format(
+'%s Objects: %s Unused: %s\n',tostring(f),tostring(h),tostring(i))end end return
+e end return b end function a.c()local b,c={Enabled=true,Jobs={},
+RegistoredCallbacks={},IsWaiting=false,TickThreshold=20,DebugStats=false,
+CompletionTime=nil,ObjectStats=nil},{}c.__index=c local d,e,f=a.load'a',a.load
+'b',game:GetService'RunService'function c:Remove()local g,h=b.Jobs,self.Position
+table.remove(g,h)end function b:WaitCheck(g)local h=self.TickThreshold if(g%h)+1
+~=h then return end self.IsWaiting=true task.wait()self.IsWaiting=false end
+function b:AddRenderJob(g,h)local i,j=self.Jobs,{Enabled=true,Args=h,Header=g}j.
+Position=table.insert(i,j)return setmetatable(j,c)end function b:SetEnabled(g)
+self.Enabled=g end function b:RenderStep()local g,h,i=self.Jobs,self.
+RegistoredCallbacks,self.DebugStats for j,k in g do local l=false repeat self:
+WaitCheck(j)local m,n,o,p=k.Header,k.Enabled,(k.Args)if not n then l=true break
+end if typeof(m)=='string'then p=h[m]else p=m end if o then p(unpack(o))else p()
+end l=true until true if not l then break end end self.ObjectStats=e:CleanUp(i)
+end function b:BeginRenderJobs()f.PreRender:Connect(function()if not self.
+Enabled then return end if self.IsWaiting then return end local g=self.
+DebugStats local h=g and tick()or nil self:RenderStep()if g then self.
+CompletionTime=tick()-h end end)end function b:RegistorJobFunc(g,h)local i=self.
+RegistoredCallbacks i[g]=h end return b end function a.d()local b,c,d,e,f,g={
+UseScreenPoint=false,UserConfig=nil,Pointers=nil,Drawing=Drawing},a.load'a',a.
+load'b',a.load'c',game:GetService'UserInputService',workspace.CurrentCamera
+local h,i,j,k,l,m=g.WorldToScreenPoint,g.WorldToViewportPoint,g.
+GetPartsObscuringTarget,game.IsA,workspace.GetPivot,f.GetMouseLocation function
+b:Create(n,o)local p=self.Drawing local q=p.new(n)if o then self:SetProperties(q
+,o)end return q end function b:GetMousePosition()return m(f)end function b:
+SetProperties(n,o)for p,q in o do n[p]=q end end function b:ToScreenPoint(n,o)
+local p,q if typeof(n)=='CFrame'then n=n.Position end if self.UseScreenPoint
+then p,q=h(g,n)else p,q=i(g,n)end if o and not q then return self:
+GetOffscreenPoint(n)end return Vector2.new(p.X,p.Y),q end function b:
+GetTracerPoint(n,o)if o then return(o[4]+o[3])/2 end local p,q=l(n).Position,
+self:GetConfigValue('Display','AllowOffscreen')local r,s=self:ToScreenPoint(p,q)
+if not q and not s then return end return r end function b:GetObjectSize(n)if k(
+n,'Model')then return n:GetBoundingBox()end return n.CFrame,n.Size end function
+b:MultiCall(n,o)for p,q in o do local r=false repeat if not q then r=true break
+end local s=self[p]s(self,unpack(n))r=true until true if not r then break end
+end end function b:GetObject(n)local o=d:GetDrawingObject(n,function()return
+self:Create(n)end)o.Thickness=self:GetConfigValue('Display','BorderThickness')
+return o end function b:ForObjects(n,o)local p=typeof(n)if p=='Instance'then o(n
+)return end if p=='function'then n=n()end for q,r in n do o(r)e:WaitCheck(q)end
+end function b:CheckValue(n,o,...)local p=o if typeof(o)=='function'then p=o(...
+)end return p or n end function b:IsObstructedPoint(n,o)local p,q=j(g,{n},o),0.7
+for r,s in p do local t=false repeat if not k(s,'BasePart')then t=true break end
+if s.Transparency>=q then table.remove(p,r)end t=true until true if not t then
+break end end return#p>0 end function b:Get2DBoxPoints(n)local o,p=self:
+GetObjectSize(n)local q,r=self:ToScreenPoint(o)if not r then return end if self:
+GetConfigValue('Display','FaceCamera')then o=CFrame.new(o.Position,g.CFrame.
+Position)end return{self:ToScreenPoint(o*CFrame.new(p.X/2,p.Y/2,0)),self:
+ToScreenPoint(o*CFrame.new(-p.X/2,p.Y/2,0)),self:ToScreenPoint(o*CFrame.new(-p.X
+/2,-p.Y/2,0)),self:ToScreenPoint(o*CFrame.new(p.X/2,-p.Y/2,0))}end function b:
+GetOffscreenPoint(n)local o=g.ViewportSize local p,q,r,s=o*0.5,(n-g.CFrame.
+Position).Unit,g.CFrame.RightVector,g.CFrame.UpVector local t,u=q:Dot(r),q:Dot(s
+)local v=Vector2.new(t,-u).Unit local w,x=math.abs(p.X/v.X),math.abs(p.Y/v.Y)
+local y=math.min(w,x)return p+v*y end function b:GetConfigValue(n,o)local p=self
+.UserConfig return p[n][o]end function b:DrawSkeleton(n,o)local p=self.Pointers
+local q=p:GetSkeletonMap(n)if not q then return end local r=o.Color local s=self
+:GetConfigValue('Colors','SkeletonColor',r)for t,u in q do local v=false repeat
+local w,x=u[1],u[2]local y,z=n:FindFirstChild(w),n:FindFirstChild(x)if not y or
+not z then v=true break end local A,B=self:ToScreenPoint(y.Position)local C=self
+:ToScreenPoint(z.Position)if not B then v=true break end local D=self:GetObject
+'Line'D.From=A D.To=C D.Color=s v=true until true if not v then break end end
+end function b:DrawHealth(n,o)local p=self.Pointers local q,r=p:GetHealth(n)if
+not q then return end local s=o.PrePoints local t=s or self:Get2DBoxPoints(n)if
+not t then return end local u,v=t[1],t[4]local w=v-u local x=Vector2.new(w.Y,-w.
+X)if x.Magnitude==0 then return end local y=w.Magnitude local z,A=y*0.1,x.Unit
+local B,C=A*z,math.clamp(q/r,0,1)local D,E,F=v:Lerp(u,C),self:GetConfigValue(
+'Colors','HealthColor'),self:GetConfigValue('Colors','EmptyHealthColor')if C<1
+then local G=self:GetObject'Line'G.From=u-B G.To=v-B G.Color=F end local G=self:
+GetObject'Line'G.From=D-B G.To=v-B G.Color=E end function b:DrawLabel(n,o)local
+p,q,r,s=o.OffsetPercent or 0.1,o.PrePoints,o.Color,o.Text local t=q or self:
+Get2DBoxPoints(n)if not t then return end local u,v,w,x,y=t[1],t[2],self:
+GetConfigValue('Colors','NameColor'),self:GetConfigValue('Display',
+'BorderThickness'),self:GetConfigValue('Display','LabelSize')local z=v-u local A
+=z.Magnitude local B=A*p local C,D,E=Vector2.new(0,B+y+x),(u+v)/2,self:GetObject
+'Text'E.Text=self:CheckValue('',s,n)E.Color=self:CheckValue(w,r,n)E.Size=y E.
+Center=true E.Outline=true E.Position=D-C end function b:Draw2DBox(n,o)local p,q
+=o.PrePoints,o.Color local r=p or self:Get2DBoxPoints(n)if not r then return end
+local s,t=self:GetConfigValue('Colors','BoxColor'),self:GetObject'Quad't.Color=
+self:CheckValue(s,q,n)t.PointA=r[1]t.PointB=r[2]t.PointC=r[3]t.PointD=r[4]end
+function b:DrawTracer(n,o)local p,q,r,s,t,u,v=o.PrePoints,o.Color,self:
+GetConfigValue('Display','TracersFollowMouse'),self:GetConfigValue('Colors',
+'TracerColor'),g.ViewportSize,10 if r then v=self:GetMousePosition()else v=
+Vector2.new(t.X/2,t.Y-u)end local w=self:GetTracerPoint(n,p)if not w then return
+end local x=self:GetObject'Line'x.Color=self:CheckValue(s,q,n)x.From=v x.To=w
+end return b end function a.e()local b,c={},a.load'a'function b:Merge(d,e)if not
+e then return end for f,g in e do d[f]=g end return d end function b:
+CheckInterval(d,e,f)if not d then return end if not e then return true end local
+g=f-e return g>=d end return b end function a.f()local b={}b.__index=b a.load'a'
+function b:NewGroup()local c={Enabled=true}return setmetatable(c,self)end
+function b:Remove()self.Enabled=false end return b end function a.g()local b={
+ReGui=
+[[https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua]]
+,WindowConfig={Theme='Sigma-ESP',Title='Sigma ESP | By: depso',Size=UDim2.
+fromOffset(300,200)},ElementValueTypes={boolean='Checkbox',Color3='DragColor3',
+number='SliderInt'}}b.Accent={Dark=Color3.fromRGB(35,30,35),Normal=Color3.
+fromRGB(148,98,255),Light=Color3.fromRGB(193,164,255)}b.ThemeConfig={BaseTheme=
+'ImGui',TitleBarBg=b.Accent.Dark,TitleBarBgActive=b.Accent.Normal,FrameBg=b.
+Accent.Normal,FrameBgActive=b.Accent.Light,TabBg=b.Accent.Normal,TabBgActive=b.
+Accent.Normal,SliderGrab=b.Accent.Normal,ResizeGrab=b.Accent.Normal,
+CollapsingHeaderBg=b.Accent.Normal,CheckMark=b.Accent.Light}local c,d=a.load'a',
+(a.load'c')function b:Init(e)local f,g=self.ReGui,self.ThemeConfig ReGui=
+loadstring(game:HttpGet(f))()ReGui:DefineTheme('Sigma-ESP',g)self:CreateWindow()
+self:MakeTabs(e)end function b:MakeTabs(e)local f=self.Window self:
+MakeOptionsTab(e,f:CreateTab{Name='Options'})self:MakeDebugTab(f:CreateTab{Name=
+'Debug'})end function b:CreateWindow()local e=self.WindowConfig local f=ReGui:
+TabsWindow(e)self.Window=f end function b:MakeDebugTab(e)e:Checkbox{Value=true,
+Label='Debug Enabled',Callback=function(f,g)d.DebugStats=g end}local f,g=e:
+Label(),e:Label()d:AddRenderJob(function()if not d.DebugStats then return end f.
+Text=string.format('Render time: %s',tostring(d.CompletionTime))g.Text=tostring(
+d.ObjectStats)end)end function b:MakeOptionsTab(e,f)for g,h in e do local i=f:
+CollapsingHeader{Title=g}self:CreateOptions(i,h)end end function b:CreateOptions
+(e,f)for g,h in f do self:CreateOption(e,g,h,function(i,j)f[g]=j end)end end
+function b:CreateOption(e,f,g,h)local i=self.ElementValueTypes local j=i[typeof(
+g)]assert(j,string.format('No element for %s',tostring(f)))local k,l={Label=f,
+Value=g,Callback=h},e[j]l(e,k)end return b end function a.h()local b,c={
+SkeletonMaps={R15={{'Head','UpperTorso'},{'UpperTorso','LowerTorso'},{
+'UpperTorso','LeftUpperArm'},{'LeftUpperArm','LeftLowerArm'},{'LeftLowerArm',
+'LeftHand'},{'UpperTorso','RightUpperArm'},{'RightUpperArm','RightLowerArm'},{
+'RightLowerArm','RightHand'},{'LowerTorso','LeftUpperLeg'},{'LeftUpperLeg',
+'LeftLowerLeg'},{'LeftLowerLeg','LeftFoot'},{'LowerTorso','RightUpperLeg'},{
+'RightUpperLeg','RightLowerLeg'},{'RightLowerLeg','RightFoot'}},R6={{'Head',
+'Torso'},{'Torso','Left Arm'},{'Torso','Right Arm'},{'Torso','Left Leg'},{
+'Torso','Right Leg'}}}},game:GetService'Players'local d=c.LocalPlayer function b
+:GetTeam(e)return e.Team end function b:GetCharacter(e)return e.Character end
+function b:GetPlayerName(e)return e.Name end function b:IsTeamMate(e)local f,g=
+self:GetTeam(d),self:GetTeam(e)return g==f end function b:GetTeamColor(e)local f
+=self:GetTeam(e)if not f then return end return f.TeamColor.Color end function b
+:GetPlayers()return c:GetPlayers()end function b:GetLocalPlayer()return d end
+function b:GetHealth(e)local f=e:FindFirstChildOfClass'Humanoid'if not f then
+return end return f.Health,f.MaxHealth end function b:GetSkeletonMap(e)local f,g
+=b.SkeletonMaps,e:FindFirstChildOfClass'Humanoid'if not g then return end local
+h=g.RigType.Name return f[h]end return b end function a.i()return{Colors={
+BoxColor=Color3.fromRGB(94,255,0),TracerColor=Color3.fromRGB(94,255,0),
+SkeletonColor=Color3.fromRGB(255,157,0),HealthColor=Color3.fromRGB(9,255,0),
+EmptyHealthColor=Color3.fromRGB(255,0,0),ClosestPlayerColor=Color3.fromRGB(144,0
+,255),NameColor=Color3.fromRGB(255,255,255)},Objects={Boxes2D=true,Tracers=true,
+Names=true,Health=true,Skeleton=true},Display={VisibilityCheck=false,
+TracersFollowMouse=false,TeamColor=true,AllowOffscreen=true,FaceCamera=true,
+DisplayDead=false,BorderThickness=2,LabelSize=16,TeamMates=true,HighlightClosest
+=true,OnlyShowClosest=false,ExcludeLocalPlayer=true}}end end local b,c,d,e,f,g,h
+={Enabled=true,DrawPlayers=false,UiEnabled=false,UserConfig=nil},a.load'd',a.
+load'e',a.load'c',a.load'f',a.load'g',a.load'a'local i,j,k=a.load'h',a.load'i',
+workspace.GetPivot function b:Init(l)d:Merge(self,l)d:Merge(c,l)if self.
+UiEnabled then local m=self.UserConfig g:Init(m)end return self end function b:
+SetEnabled(l)self.Enabled=l return self end function b:CheckPlayer(l,m,n,o)local
+p,q=self.Pointers,l.Display local r,s,t=q.TeamMates,q.DisplayDead,q.
+ExcludeLocalPlayer if not r and p:IsTeamMate(n)then return end local u=p:
+GetHealth(m)if not s and(not u or u<=0)then return end if t and n==o then return
+end return true end function b:DrawPlayer(l,m,n,o)local p,q,r=self.Pointers,l.
+Objects,l.Display.TeamColor local s,t=o or r and p:GetTeamColor(n)or nil,p:
+GetPlayerName(n)local u={PrePoints=c:Get2DBoxPoints(m),Color=s,Text=t}c:
+MultiCall({m,u},{DrawTracer=q.Tracers,DrawSkeleton=q.Skeleton,Draw2DBox=q.
+Boxes2D,DrawHealth=q.Health,DrawLabel=q.Names})end function b:DrawPlayersStep()
+if not self.Enabled then return end local l,m=self.Pointers,self.UserConfig
+local n=l:GetLocalPlayer()local o,p=l:GetCharacter(n),m.Display local q,r,s,t,u,
+v,w=p.OnlyShowClosest,p.HighlightClosest,p.VisibilityCheck,(m.Colors.
+ClosestPlayerColor)if o then w=k(o)end for x,y in l:GetPlayers()do local z=false
+repeat local A=l:GetCharacter(y)if not A then z=true break end if not self:
+CheckPlayer(m,A,y,n)then z=true break end local B=k(A).Position if s then local
+C=c:IsObstructedPoint(B,{o,A})if C then z=true break end end if q or r then if
+not o then z=true break end local C=(B-w.Position).Magnitude if not v or C<v
+then v=C u={y,A}end if q then z=true break end end self:DrawPlayer(m,A,y)e:
+WaitCheck(x)z=true until true if not z then break end end if u then local x,y,z=
+u[1],u[2],r and t or nil self:DrawPlayer(m,y,x,z)end end function b:ExportFunc(l
+,m)local n=m[l]assert(n,string.format('Class function %s does not exist!',
+tostring(l)))self[l]=function(...)return n(m,...)end end function b:
+ExportDrawingFunc(l,m)local n=c[m]local o=function(o,p)local q,r,s,t,u=p.
+Highlight,p.RefreshInterval,p.Group,p.AllowedCheck,p.GetHighlightPart local v,w=
+(typeof(q)=='function')local x=v and{}or q return e:AddRenderJob(function()if s
+and not s.Enabled then return end local y=tick()if v and d:CheckInterval(r,w,y)
+then w=y x=q()end c:ForObjects(x,function(z)if not z then return end local A=z
+if t and not t(z)then return end if u then A=u(z)if not A then return end end n(
+c,A,p)end)end)end self[l]=o end function b:MakeBasePointers()return d:Merge({},i
+)end function b:SetGamePointers(l)local m=self:MakeBasePointers()local n=d:
+Merge(m,l)self.Pointers=n c.Pointers=n end b:ExportDrawingFunc('Box2D',
+'Draw2DBox')b:ExportDrawingFunc('Tracer','DrawTracer')b:ExportDrawingFunc(
+'Skeleton','DrawSkeleton')b:ExportDrawingFunc('Label','DrawLabel')b:ExportFunc(
+'NewGroup',f)b:ExportFunc('AddRenderJob',e)b:Init{Pointers=b:MakeBasePointers(),
+UserConfig=j}e:AddRenderJob(function()if not b.DrawPlayers then return end b:
+DrawPlayersStep()end)e:BeginRenderJobs()return b
