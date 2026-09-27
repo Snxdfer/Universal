@@ -618,7 +618,7 @@ do
     end
     function moduleRegistry.g()
         local uiManager = {
-            ReGui = 'https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua',
+            ReGui = 'https://raw.githubusercontent.com/catblox1346/Dear-ReGui/refs/heads/main/ReGui.lua',
             WindowConfig = {
                 Theme = 'Sigma-ESP',
                 Title = 'Sigma ESP | By: depso',
