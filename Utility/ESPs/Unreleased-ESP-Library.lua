@@ -18,7 +18,7 @@
 	@author depso (depthso)
 	@description Optimized ESP for Roblox
     
-	This file is COMPILED
+	This file is COMPILED.
 ]]
 
 local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
