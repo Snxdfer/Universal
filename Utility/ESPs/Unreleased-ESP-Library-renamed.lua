@@ -763,7 +763,7 @@ end
 local ESP, ESPRenderer, utils, scheduler, groupClass, uiManager, baseModule = {
 	Enabled = true,
 	DrawPlayers = false,
-	UiEnabled = false,
+	UiEnabled = true,
 	UserConfig = nil,
 }, moduleRegistry.load'd', moduleRegistry.load'e', moduleRegistry.load'c', moduleRegistry.load'f', moduleRegistry.load'g', moduleRegistry.load'a'
 local playerUtils, defaultConfig, getPivot = moduleRegistry.load'h', moduleRegistry.load'i', workspace.GetPivot
