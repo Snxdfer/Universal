@@ -59,11 +59,11 @@ if identifyexecutor then local ok, res = pcall(identifyexecutor) if ok and res t
 
 local Supported = "Yes"
 InfoSection:AddParagraph("Script Info", "Version: "   .. ScriptVersion .. "\nExecutor: " .. Executor .. "\nSupported: " .. Supported .. "\nCloneRef: "  .. (CloneRefSupported and "Yes" or "No"))
-InfoSection:AddParagraph("Generated Scripts", "Scripts you generate will " .. (CloneRefSupported and "USE cloneref (your executor supports it)." or "use standard GetService (cloneref not detected)."))
+InfoSection:AddParagraph("Generated Scripts", "scripts you generate will " .. (CloneRefSupported and "USE cloneref (your executor supports it)." or "use standard GetService (cloneref not detected)."))
 
 local MainTab = Window:MakeTab({Name = "Main", Icon = "rbxassetid://10723407389", PremiumOnly = false})
 local PositionSection = MainTab:AddSection({Name = "Position"})
-local PositionLabel = PositionSection:AddLabel("Waiting for Character...")
+local PositionLabel = PositionSection:AddLabel("waiting for character...")
 
 task.spawn(function()
     local lastPos = Vector3.new(0, 0, 0)
@@ -72,14 +72,14 @@ task.spawn(function()
 
         local character = LocalPlayer.Character
         if not character then
-            PositionLabel:Set("Waiting for Character...")
+            PositionLabel:Set("waiting for character...")
             LocalPlayer.CharacterAdded:Wait()
             continue
         end
 
         local hrp = character:FindFirstChild("HumanoidRootPart")
         if not hrp then
-            PositionLabel:Set("Waiting for HumanoidRootPart...")
+            PositionLabel:Set("waiting for HumanoidRootPart...")
             character:WaitForChild("HumanoidRootPart", 10)
             continue
         end
@@ -124,7 +124,7 @@ PositionSection:AddButton({
 
 local NormalSection = MainTab:AddSection({Name = "Instant Teleport Script"})
 NormalSection:AddButton({
-    Name = "Generate (Position only)",
+    Name = "Generate (position only)",
     Callback = function()
         local hrp = GetHRP()
         if not hrp then
@@ -149,7 +149,7 @@ HumanoidRootPart.CFrame = CFrame.new(%g, %g, %g)
 })
 
 NormalSection:AddButton({
-    Name = "Generate (With Rotation)",
+    Name = "Generate (with rotation)",
     Callback = function()
         local hrp = GetHRP()
         if not hrp then
@@ -177,7 +177,6 @@ local TweenSection = MainTab:AddSection({Name = "Tween Teleport Script" })
 local TweenTime = 3
 local TweenEasingStyle = "Linear (Default)"
 TweenSection:AddLabel("i dont recommend using other easing style than Linear")
-
 TweenSection:AddSlider({
     Name = "Tween Time",
     Min = 1,
@@ -266,7 +265,7 @@ for i = 1, 3 do
                 return
             end
             hrp.CFrame = Waypoints[i]
-            Notify("coords finder", "Teleported to Waypoint " .. i .. "!", "rbxassetid://6023426945", 3)
+            Notify("coords finder", "teleported to Waypoint " .. i .. "!", "rbxassetid://6023426945", 3)
         end
     })
 
