@@ -9,7 +9,7 @@ local TweenService = cloneref and cloneref(game:GetService("TweenService")) or g
 local ScriptVersion = "3.0.0"
 local Executor = "Unknown"
 local LocalPlayer = Players.LocalPlayer
-local CloneRefSupported = (cloneref ~= nil)
+local ClonerefSupported = (cloneref ~= nil)
 
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Snxdfer/back-ups-for-libs/refs/heads/main/OrionModified.lua"))()
 local Window = OrionLib:MakeWindow({Name = "coords finder | v" .. ScriptVersion .. " | .gg/jB4yJgn3pE", HidePremium = false, SaveConfig = false, SearchBar = false, IntroEnabled = true, IntroText = "made by 00Fazee (elrandom#1311)", IntroIcon = "rbxassetid://120907355927374", ShowIcon = true, Icon = "rbxassetid://120907355927374", ConfigFolder = "coordsfinderv2"})
@@ -45,7 +45,7 @@ local function GetPositionText(hrp)
 end
 
 local function ServiceLine(serviceName)
-    if CloneRefSupported then
+    if ClonerefSupported then
         return string.format('local %s = cloneref and cloneref(game:GetService("%s")) or game:GetService("%s")', serviceName, serviceName, serviceName)
     else
         return string.format('local %s = game:GetService("%s")', serviceName, serviceName)
@@ -58,8 +58,8 @@ local InfoSection = InformationTab:AddSection({Name = "Information"})
 if identifyexecutor then local ok, res = pcall(identifyexecutor) if ok and res then Executor = tostring(res) end end
 
 local Supported = "Yes"
-InfoSection:AddParagraph("Script Info", "Version: "   .. ScriptVersion .. "\nExecutor: " .. Executor .. "\nSupported: " .. Supported .. "\nCloneRef: "  .. (CloneRefSupported and "Yes" or "No"))
-InfoSection:AddParagraph("Generated Scripts", "scripts you generate will " .. (CloneRefSupported and "USE cloneref (your executor supports it)." or "use standard GetService (cloneref not detected)."))
+InfoSection:AddParagraph("Script Info", "version: "   .. ScriptVersion .. "\nexecutor: " .. Executor .. "\nsupported: " .. Supported .. "\ncloneref: "  .. (ClonerefSupported and "Yes" or "No"))
+InfoSection:AddParagraph("Generated Scripts", "scripts you generate will " .. (ClonerefSupported and "USE cloneref (your executor supports it)." or "use standard GetService (cloneref not detected)."))
 
 local MainTab = Window:MakeTab({Name = "Main", Icon = "rbxassetid://10723407389", PremiumOnly = false})
 local PositionSection = MainTab:AddSection({Name = "Position"})
